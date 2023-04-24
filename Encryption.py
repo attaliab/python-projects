@@ -4,16 +4,17 @@ direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
 text = input("Type your message:\n").lower()
 shift = int(input("Type the shift number:\n"))
 
-#TODO-1: Create a function called 'encrypt' that takes the 'text' and 'shift'
-#as inputs.
+#creates word to be decoded
+new_word = []
 def encrypt(text, shift):
-    #go through all the letters in 'text'
     for letter in text:
         index = alphabet.index(letter)
-        location= index + shift
-    #locate  the letter in the alphabet list      
-    #add shift to it, return that letter to a new list
-    #
+        location = index + shift
+        new_letter = alphabet[location]
+        new_word.append(new_letter)
+    print(new_word)
+
+encrypt(text, shift)
         
         
 
