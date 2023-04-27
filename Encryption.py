@@ -5,7 +5,6 @@ text = input("Type your message:\n").lower()
 shift = int(input("Type the shift number:\n"))
 
 
-
 def caesar(text, shift, direction):
     new_word = ""
     for letter in text:
