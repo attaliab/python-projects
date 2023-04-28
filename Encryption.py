@@ -3,30 +3,29 @@ alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n'
 direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
 text = input("Type your message:\n").lower()
 shift = int(input("Type the shift number:\n"))
+        
+if shift > 26:
+    shift = shift % 26
 
 
 def caesar(text, shift, direction):
     new_word = ""
-    for letter in text:
-        
-    #TODO-3: What happens if the user enters a number/symbol/space?
-    #Can you fix the code to keep the number/symbol/space when the text is encoded/decoded?
-    #e.g. start_text = "meet me at 3"
-    #end_text = "•••• •• •• 3"
-        index = alphabet.index(letter)
-        if direction == "encode":
-            position = index + shift
-        elif direction == "decode":
-            position = index - shift
-        new_letter = alphabet[position]
-        new_word += new_letter
+    for char in text:
+        if char not in alphabet:
+            new_word += char
+        else:
+            index = alphabet.index(char)
+            if direction == "encode":
+                position = index + shift
+            elif direction == "decode":
+                position = index - shift
+            new_char = alphabet[position]
+            new_word += new_char
     print(f"The encoded text is {new_word}")
-    restart = (input("Would you like to restart? "))
-    #if restart == "no":
-       # print("Goodbye")
+
     
 caesar(text, shift, direction)
-
+restart = (input("Would you like to restart? "))
 while restart == "yes":
     direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
     text = input("Type your message:\n").lower()
@@ -35,25 +34,3 @@ while restart == "yes":
     restart = (input("Would you like to restart? "))
     if restart == "no":
         print("Goodbye")
-    
-
-    
-        
-
-        
-    
-    #TODO-1: Import and print the logo from art.py when the program starts.
-
-#TODO-4: Can you figure out a way to ask the user if they want to restart the cipher program?
-#e.g. Type 'yes' if you want to go again. Otherwise type 'no'.
-#If they type 'yes' then ask them for the direction/text/shift again and call the caesar() function again?
-#Hint: Try creating a while loop that continues to execute the program if the user types 'yes'. 
-
-
-
-
-
-#TODO-2: What if the user enters a shift that is greater than the number of letters in the alphabet?
-#Try running the program and entering a shift number of 45.
-#Add some code so that the program continues to work even if the user enters a shift number greater than 26. 
-#Hint: Think about how you can use the modulus (%).
