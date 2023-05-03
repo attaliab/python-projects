@@ -10,22 +10,18 @@ student_scores  =  {
 student_grades = {}
 
 #Write your code below to add the grades to student_grades
-for name in student_scores.keys():
-    student_grades[name] = student_scores[name]
-print(student_grades)
-for score in student_scores.values():
+for student in student_scores:
+    score = student_scores[student]
+
     if score >= 91:
-        score = "Outstanding"
-        student_grades = student_scores[score]
+        student_grades[student] = "Outstanding"
     elif score >= 81 and score <= 90:
-        score = "Exceeds Expectations"
-        student_grades = student_scores[score]
+        student_grades[student] = "Exceeds Expectations"
     elif score >= 71 and score <= 80:
-        score = "Acceptable"
-        student_grades = student_scores[score]
+        student_grades[student] = "Acceptable"
     else:
-        score = "Fail"
-        student_grades = student_scores[score]
+        student_grades[student] = "Fail"
 
-
+#How to  redefine item in dictionary
+#student_grades["Draco"] = 82
 print(student_grades)
